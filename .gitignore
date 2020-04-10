@@ -1,4 +1,6 @@
 /data
 /plots
-/.ipynb_checkpoints
+/notebooks/.ipynb_checkpoints
+.ipynb_checkpoints/
+
 

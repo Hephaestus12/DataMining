@@ -14,7 +14,7 @@ def intValueOf(str):
 	else:
 		return 0
 
-with open('HealthCare.csv', 'r') as healthCareCSV:
+with open('../data/HealthCare.csv', 'r') as healthCareCSV:
     healthCareList = list(healthCareCSV)
     headingRow = True
     reducedCSVList = []
@@ -36,7 +36,7 @@ with open('HealthCare.csv', 'r') as healthCareCSV:
        	districtClean = re.sub('\W+',' ', rowList[1])
        	reducedCSVList.append([stateClean, districtClean, totalHealthCareCentres])
 
-    with open('healthCleanReduced.csv', 'w') as healthCleanReduced:
+    with open('../data/healthCleanReduced.csv', 'w') as healthCleanReduced:
     	writer = csv.writer(healthCleanReduced)
     	writer.writerows(reducedCSVList)
 

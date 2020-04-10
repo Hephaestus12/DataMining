@@ -1,6 +1,6 @@
 import csv
 
-with open('healthCleanReduced.csv', 'r') as healthCareReducedCSV:
+with open('../data/healthCleanReduced.csv', 'r') as healthCareReducedCSV:
 	healthCareReducedList = list(healthCareReducedCSV)
 	with open('habitation_reduced.csv', 'r') as habitationReduced:
 		habitationReducedList = list(habitationReduced)

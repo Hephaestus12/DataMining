@@ -19,7 +19,7 @@ def percentage(big, small):
 	else:
 		return "NA"
 
-with open('healthAndHabitatMerged.csv', 'r') as merged:
+with open('../data/healthAndHabitatMerged.csv', 'r') as merged:
 	mergedList = list(merged)
 	headingRow = True
 
@@ -58,7 +58,7 @@ with open('healthAndHabitatMerged.csv', 'r') as merged:
 
 	#print(addedCSVList)
 
-	with open('AddedAttributesMerged.csv', 'w') as merged:
+	with open('../data/AddedAttributesMerged.csv', 'w') as merged:
 		writer = csv.writer(merged)
 		writer.writerows(addedCSVList)
 		
