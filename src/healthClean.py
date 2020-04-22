@@ -18,7 +18,7 @@ with open('../data/HealthCare.csv', 'r') as healthCareCSV:
     healthCareList = list(healthCareCSV)
     headingRow = True
     reducedCSVList = []
-    reducedCSVList.append(['State', 'District', 'Lower Health Index', 'Higher Health Index'])
+    reducedCSVList.append(['State', 'District', 'Number of Sub Centres', 'Number of Primary Health Centres', 'Number of Community Health Centres', 'Sub Divisional Hospitals', 'District Hospitals'])
     for row in healthCareList:
         if headingRow:
             headingRow = False
@@ -30,15 +30,12 @@ with open('../data/HealthCare.csv', 'r') as healthCareCSV:
         noOfCommunityCentres = intValueOf(rowList[4].strip())
        	noOfSubDivisional = intValueOf(rowList[5].strip())
        	noOfDistrict = intValueOf(rowList[6].strip())
-
-        lowerHealthIndex = noOfSubCentres + (5 * noOfPrimaryCentres) + (25 * noOfCommunityCentres)
-        higherHealthIndex = (noOfSubDivisional) + (5 * noOfDistrict)
        	
        	# removing special characters
        	stateClean = re.sub('\W+',' ', rowList[0])
        	districtClean = re.sub('\W+',' ', rowList[1])
 
-       	reducedCSVList.append([stateClean, districtClean, lowerHealthIndex, higherHealthIndex])
+       	reducedCSVList.append([stateClean, districtClean, noOfSubCentres, noOfPrimaryCentres, noOfCommunityCentres, noOfSubDivisional, noOfDistrict])
 
     with open('../data/healthCleanReduced.csv', 'w') as healthCleanReduced:
     	writer = csv.writer(healthCleanReduced)

@@ -26,7 +26,7 @@ with open('../data/healthAndHabitatMerged.csv', 'r') as merged:
 	stateIndices = dict()
 
 	addedCSVList = []
-	addedCSVList.append(['State', 'District', 'SC Current', 'ST Current', 'General Current', 'SC Covered', 'ST Covered', 'General Covered', 'Total Population','Lower Health Index per Capita', 'Higher Health Index per Capita', 'Percentage SC', 'Percentage SC covered',  'Percentage ST', 'Percentage ST covered',  'Percentage General', 'Percentage General Covered', 'State Index', 'Health Level(lower)', 'Health Level(higher)', 'Backward Concentrated'])
+	addedCSVList.append(['State', 'District', 'SC Current', 'ST Current', 'General Current', 'SC Covered', 'ST Covered', 'General Covered', 'Total Population', 'Percentage SC', 'Percentage SC covered',  'Percentage ST', 'Percentage ST covered',  'Percentage General', 'Percentage General Covered', 'State Index', 'Backward Concentrated', 'Number of Sub Centres', 'Number of Primary Health Centres', 'Number of Community Health Centres', 'Sub Divisional Hospitals', 'District Hospitals'])
 
 	for row in mergedList:
 		if headingRow:
@@ -43,8 +43,6 @@ with open('../data/healthAndHabitatMerged.csv', 'r') as merged:
 			stateIndex = stateIndices[state]
 
 		backwardConcentrated = 0
-		lowerLevel = 0
-		higherLevel = 0
 
 		stCurrent = intValueOf(rowList[3])
 		scCurrent = intValueOf(rowList[2])
@@ -66,29 +64,8 @@ with open('../data/healthAndHabitatMerged.csv', 'r') as merged:
 			backwardConcentrated = 1
 		perGen = percentage(totalPopulation, generalCurrent)
 
-		lowerHealthIndexPerCapita = intValueOf(rowList[8]) / totalPopulation * 10 ** 5
-		higherHealthIndexPerCapita = intValueOf(rowList[9]) / totalPopulation * 10 ** 5
-
-		if(lowerHealthIndexPerCapita>=0 and lowerHealthIndexPerCapita<37) :
-			lowerLevel = 1
-		elif(lowerHealthIndexPerCapita>=37 and lowerHealthIndexPerCapita<49) :
-			lowerLevel = 2
-		elif(lowerHealthIndexPerCapita>=49 and lowerHealthIndexPerCapita<64) :
-			lowerLevel = 3
-		else :
-			lowerLevel = 4
-		
-		if(higherHealthIndexPerCapita>=0 and higherHealthIndexPerCapita<0.24) :
-			higherLevel = 1
-		elif(higherHealthIndexPerCapita>=0.24 and higherHealthIndexPerCapita<0.57) :
-			higherLevel = 2
-		elif(higherHealthIndexPerCapita>=0.57 and higherHealthIndexPerCapita<0.95) :
-			higherLevel = 3
-		else :
-			higherLevel = 4
-
         
-		addedCSVList.append([rowList[0], rowList[1], rowList[2], rowList[3], rowList[4], rowList[5], rowList[6], rowList[7], totalPopulation, lowerHealthIndexPerCapita, higherHealthIndexPerCapita, perSc, perScCovered, perSt, perStCovered, perGen, perGenCovered, stateIndex, lowerLevel, higherLevel, backwardConcentrated])
+		addedCSVList.append([rowList[0], rowList[1], rowList[2], rowList[3], rowList[4], rowList[5], rowList[6], rowList[7], totalPopulation, perSc, perScCovered, perSt, perStCovered, perGen, perGenCovered, stateIndex, backwardConcentrated, rowList[8], rowList[9], rowList[10], rowList[11], rowList[12].strip()])
 
 	#print (stateIndices)
 	#print(addedCSVList)
