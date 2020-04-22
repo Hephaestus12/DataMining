@@ -1,8 +1,8 @@
 import csv
 
-with open('healthCleanReduced.csv', 'r') as healthCareReducedCSV:
+with open('../data/healthCleanReduced.csv', 'r') as healthCareReducedCSV:
 	healthCareReducedList = list(healthCareReducedCSV)
-	with open('habitation_reduced.csv', 'r') as habitationReduced:
+	with open('../data/habitation_reduced.csv', 'r') as habitationReduced:
 		habitationReducedList = list(habitationReduced)
 		stateSetInHabitation = dict()
 		headingRow = True
@@ -40,6 +40,6 @@ with open('healthCleanReduced.csv', 'r') as healthCareReducedCSV:
 		#print(uncommonCount)
 		#print (reducedCSVList)
 
-		with open('healthAndHabitatMerged.csv', 'w') as merged:
+		with open('../data/healthAndHabitatMerged.csv', 'w') as merged:
 			writer = csv.writer(merged)
 			writer.writerows(reducedCSVList)
