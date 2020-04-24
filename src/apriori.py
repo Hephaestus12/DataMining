@@ -55,7 +55,7 @@ with open('../data/MergedWithHealthLevels.csv', 'r') as data:
     print()
     print()
     
-    for i in range(5) :
+    for i in range(4) :
         if i != 0 :
             print('Considering rule : [ Backward classes --> higher level '+str(i)+' treatment ]')
             print('\tSupport = ' + str(num_back_conc/495))
@@ -64,3 +64,14 @@ with open('../data/MergedWithHealthLevels.csv', 'r') as data:
                 print('\tLift = '+str(num_back_conc_higher[i]*495/(num_back_conc*num_higher[i])))
             print()
  
+print('Considering rule : [ Backward classes --> lower level 2, 3, and 4 treatment ]')
+print('\tSupport = ' + str(num_back_conc/495))
+print('\tConfidence = '+str((num_back_conc_lower[2]+num_back_conc_lower[3]+num_back_conc_lower[4])/num_back_conc))
+print('\tLift = '+str((num_back_conc_lower[2]+num_back_conc_lower[3]+num_back_conc_lower[4])*495/(num_back_conc*(num_lower[2]+num_lower[3]+num_lower[4]))))
+print()
+
+print('Considering rule : [ Backward classes --> higher level 2 and 3 treatment ]')
+print('\tSupport = ' + str(num_back_conc/495))
+print('\tConfidence = '+str((num_back_conc_higher[2]+num_back_conc_higher[3])/num_back_conc))
+print('\tLift = '+str((num_back_conc_higher[2]+num_back_conc_higher[3])*495/(num_back_conc*(num_higher[2]+num_higher[3]))))
+print()
