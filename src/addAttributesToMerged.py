@@ -53,7 +53,7 @@ with open('../data/healthAndHabitatMerged.csv', 'r') as merged:
 		generalCovered = intValueOf(rowList[7])
 
 		perStCovered = percentage(stCurrent, stCovered)
-		perScCovered = percentage(scCurrent, stCovered)
+		perScCovered = percentage(scCurrent, scCovered)
 		perGenCovered = percentage(generalCurrent, generalCovered)
 
 		totalPopulation = stCurrent + scCurrent + generalCurrent
