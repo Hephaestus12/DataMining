@@ -35,7 +35,7 @@ with open('../data/MergedWithLowerHealthLevel.csv', 'r') as dataset:
 
 		totalPopulation = intValueOf(rowList[8].strip())
 
-		noOfSubDivisional = intValueOf(rowList[20].strip()) * (10 ** 5) * 8 / (totalPopulation)
+		noOfSubDivisional = intValueOf(rowList[20].strip()) * (10 ** 5) / (3 * totalPopulation)
 		noOfDistrict = intValueOf(rowList[21].strip()) * (10 ** 5) / totalPopulation
 
 		maxSubDivisionalHospitals = noOfSubDivisional if noOfSubDivisional > maxSubDivisionalHospitals else maxSubDivisionalHospitals
