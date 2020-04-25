@@ -67,9 +67,6 @@ with open('../data/healthAndHabitatMerged.csv', 'r') as merged:
         
 		addedCSVList.append([rowList[0], rowList[1], rowList[2], rowList[3], rowList[4], rowList[5], rowList[6], rowList[7], totalPopulation, perSc, perScCovered, perSt, perStCovered, perGen, perGenCovered, stateIndex, backwardConcentrated, rowList[8], rowList[9], rowList[10], rowList[11], rowList[12].strip()])
 
-	#print (stateIndices)
-	#print(addedCSVList)
-
 	with open('../data/AddedAttributesMerged.csv', 'w') as merged:
 		writer = csv.writer(merged)
 		writer.writerows(addedCSVList)
