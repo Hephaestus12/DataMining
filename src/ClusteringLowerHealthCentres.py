@@ -168,7 +168,7 @@ with open('../data/MergedWithLowerHealthLevel.csv', 'w') as merged:
 	writer.writerows(finalList)
 
 ax.legend()
-
+plt.title("Fig: Normalized health care centre figure (Lower Level)")
 ax.set_xlabel('Normalised Sub Centres')
 ax.set_ylabel('Normalised Primary Centres')
 ax.set_zlabel('Normalised Community Centres')

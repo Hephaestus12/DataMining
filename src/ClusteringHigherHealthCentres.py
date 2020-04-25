@@ -137,6 +137,7 @@ with open('../data/MergedWithHealthLevels.csv', 'w') as merged:
 
 
 plt.legend()
+plt.title("Fig: Normalized health care centre figure (Higher Level)")
 plt.xlabel('Normalised Sub Divisional Hospitals')
 plt.ylabel('Normalised District Hospitals')
 plt.show()
