@@ -49,8 +49,6 @@ for i in range(len(datasetList)):
 	higherHealthLevel.append(0)
 
 centroid1 = [0, 0] # red
-#centroid2 = [maxDistrictHospitals / (5 * 2 * 2), maxDistrictHospitals / 4] # green
-#centroid3 = [maxDistrictHospitals / (5 * 2), maxDistrictHospitals / 2] # blue
 centroid2 = [maxSubDivisionalHospitals / 2, 0] # green
 centroid3 = [0, maxDistrictHospitals / 4] # blue
 
@@ -91,16 +89,27 @@ for times in range(4):
 			higherHealthLevel[index] = 1
 			noOfElementsCentroid1 += 1
 			sumCentroid1 = [sumCentroid1[0] + subDivisionalHospitals[index], sumCentroid1[1] + districtHospitals[index]]
+			if noOfElementsCentroid1 == 1 and times == 3:
+				plt.scatter(subDivisionalHospitals[index], districtHospitals[index], c = colour, label = 'Level 1')
+			else:
+				plt.scatter(subDivisionalHospitals[index], districtHospitals[index], c = colour)
+
 		elif colour == 'green':
 			higherHealthLevel[index] = 2
 			noOfElementsCentroid2 += 1
 			sumCentroid2 = [sumCentroid2[0] + subDivisionalHospitals[index], sumCentroid2[1] + districtHospitals[index]]
+			if noOfElementsCentroid2 == 2 and times == 3:
+				plt.scatter(subDivisionalHospitals[index], districtHospitals[index], c = colour, label = 'Level 2')
+			else:
+				plt.scatter(subDivisionalHospitals[index], districtHospitals[index], c = colour)
 		elif colour == 'blue':
 			higherHealthLevel[index] = 3
 			noOfElementsCentroid3 += 1
 			sumCentroid3 = [sumCentroid3[0] + subDivisionalHospitals[index], sumCentroid3[1] + districtHospitals[index]]
-
-		plt.scatter(subDivisionalHospitals[index], districtHospitals[index], c = colour)
+			if noOfElementsCentroid3 == 1 and times == 3:
+				plt.scatter(subDivisionalHospitals[index], districtHospitals[index], c = colour, label = 'Level 3')
+			else:
+				plt.scatter(subDivisionalHospitals[index], districtHospitals[index], c = colour)
 
 	if noOfElementsCentroid1 != 0:
 		centroid1 = [sumCentroid1[0] / noOfElementsCentroid1, sumCentroid1[1] / noOfElementsCentroid1]
@@ -126,6 +135,8 @@ with open('../data/MergedWithHealthLevels.csv', 'w') as merged:
 	writer = csv.writer(merged)
 	writer.writerows(finalList)
 
+
+plt.legend()
 plt.xlabel('Normalised Sub Divisional Hospitals')
 plt.ylabel('Normalised District Hospitals')
 plt.show()

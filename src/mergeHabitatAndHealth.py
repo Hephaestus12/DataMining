@@ -14,7 +14,6 @@ with open('../data/healthCleanReduced.csv', 'r') as healthCareReducedCSV:
 			rowList = rowHabitation.split(",")
 			stateSetInHabitation[rowList[1].upper().strip()] = indexInHabitation
 			indexInHabitation += 1
-		#print (stateSetInHabitation)
 
 		stateSetInHealth = dict([])
 		headingRow = True
@@ -24,9 +23,6 @@ with open('../data/healthCleanReduced.csv', 'r') as healthCareReducedCSV:
 				continue
 			rowList = rowHealth.split(",")
 			stateSetInHealth[rowList[1].upper().strip()] = rowList[2] + "," + rowList[3] + "," + rowList[4] + "," + rowList[5] + "," + rowList[6]
-
-		commonCount = 0
-		uncommonCount = 0
 
 		reducedCSVList = []
 		reducedCSVList.append(['State', 'District', 'SC Current', 'ST Current', 'General Current', 'SC Covered', 'ST Covered', 'General Covered', 'Number of Sub Centres', 'Number of Primary Health Centres', 'Number of Community Health Centres', 'Sub Divisional Hospitals', 'District Hospitals'])

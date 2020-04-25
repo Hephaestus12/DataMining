@@ -106,19 +106,34 @@ for times in range(4):
 			lowerHealthLevel[index] = 1
 			noOfElementsCentroid1 += 1
 			sumCentroid1 = [sumCentroid1[0] + subCentres[index], sumCentroid1[1] + primaryCentres[index], sumCentroid1[2] + communityCentres[index]]
+			if noOfElementsCentroid1 == 1 and times == 3:
+				ax.scatter(subCentres[index], primaryCentres[index], communityCentres[index], c = colour, label = 'Level 1')
+			else:
+				ax.scatter(subCentres[index], primaryCentres[index], communityCentres[index], c = colour)
 		elif colour == 'green':
 			lowerHealthLevel[index] = 2
 			noOfElementsCentroid2 += 1
 			sumCentroid2 = [sumCentroid2[0] + subCentres[index], sumCentroid2[1] + primaryCentres[index], sumCentroid2[2] + communityCentres[index]]
+			if noOfElementsCentroid2 == 1 and times == 3:
+				ax.scatter(subCentres[index], primaryCentres[index], communityCentres[index], c = colour, label = 'Level 2')
+			else:
+				ax.scatter(subCentres[index], primaryCentres[index], communityCentres[index], c = colour)
 		elif colour == 'orange':
 			lowerHealthLevel[index] = 3
 			noOfElementsCentroid3 += 1
 			sumCentroid3 = [sumCentroid1[0] + subCentres[index], sumCentroid3[1] + primaryCentres[index], sumCentroid3[2] + communityCentres[index]]
+			if noOfElementsCentroid3 == 1 and times == 3:
+				ax.scatter(subCentres[index], primaryCentres[index], communityCentres[index], c = colour, label = 'Level 3')
+			else:
+				ax.scatter(subCentres[index], primaryCentres[index], communityCentres[index], c = colour)
 		elif colour == 'blue':
 			lowerHealthLevel[index] = 4
 			noOfElementsCentroid4 += 1
 			sumCentroid4 = [sumCentroid4[0] + subCentres[index], sumCentroid4[1] + primaryCentres[index], sumCentroid4[2] + communityCentres[index]]
-		ax.scatter(subCentres[index], primaryCentres[index], communityCentres[index], c = colour)
+			if noOfElementsCentroid4 == 1 and times == 3:
+				ax.scatter(subCentres[index], primaryCentres[index], communityCentres[index], c = colour, label = 'Level 4')
+			else:
+				ax.scatter(subCentres[index], primaryCentres[index], communityCentres[index], c = colour)
 
 	if noOfElementsCentroid1 != 0:
 		centroid1 = [sumCentroid1[0] / noOfElementsCentroid1, sumCentroid1[1] / noOfElementsCentroid1, sumCentroid1[0] / noOfElementsCentroid1]
@@ -152,6 +167,7 @@ with open('../data/MergedWithLowerHealthLevel.csv', 'w') as merged:
 	writer = csv.writer(merged)
 	writer.writerows(finalList)
 
+ax.legend()
 
 ax.set_xlabel('Normalised Sub Centres')
 ax.set_ylabel('Normalised Primary Centres')
